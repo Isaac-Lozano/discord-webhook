@@ -37,8 +37,7 @@ impl DiscordWebhookApi {
         url = url.join(&format!("webhooks/{id}/{token}", id = webhook.id, token = webhook.token)).unwrap();
 
         let mut headers = Headers::new();
-//        headers.set(ContentType(Mime(TopLevel::Application, SubLevel::Json, vec![])));
-        headers.set_raw("Content-Type", vec![b"multipart/form-data".to_vec()]);
+        headers.set(ContentType(Mime(TopLevel::Application, SubLevel::Json, vec![])));
 
         let payload = serde_json::to_string(&data).unwrap();
 
